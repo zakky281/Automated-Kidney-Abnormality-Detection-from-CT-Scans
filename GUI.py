@@ -38,13 +38,22 @@ def get_class_names(train_dir):
         )
         class_indices = temp_generator.class_indices
         class_names_map = {v: k for k, v in class_indices.items()}
-        return [class_names_map[i] for i in sorted(class_names_map.keys())]
+        class_names = [class_names_map[i] for i in sorted(class_names_map.keys())]
+        
+        # Debugging output
+        print("Class Names:", class_names)
+        print("Number of classes:", len(class_names))
+        
+        return class_names
     except Exception as e:
         st.error(f"Failed to read class names from directory: {e}")
         return None
 
 def predict(model, pil_image, class_names):
     """Processes the image and returns the predicted class and confidence."""
+    if not class_names:
+        raise ValueError("The class names list is empty or None. Check the dataset and ensure it's loaded correctly.")
+    
     if pil_image.mode != 'RGB':
         pil_image = pil_image.convert('RGB')
 
@@ -54,8 +63,17 @@ def predict(model, pil_image, class_names):
     img_array_expanded = tf.expand_dims(img_array_rescaled, 0)
 
     predictions = model.predict(img_array_expanded)
+    
+    # Debugging output
+    print("Predictions shape:", predictions.shape)
+    print("Predictions:", predictions)
 
     predicted_index = np.argmax(predictions[0])
+
+    # Check if the predicted index is out of bounds
+    if predicted_index >= len(class_names):
+        raise ValueError(f"Predicted index {predicted_index} is out of bounds for class names list of length {len(class_names)}.")
+    
     predicted_class = class_names[predicted_index]
     confidence = predictions[0][predicted_index] * 100
 
@@ -79,21 +97,6 @@ with st.sidebar:
     2.  **Predict:** The model classifies each image automatically.
     3.  **Clear:** Click the 'Clear All' button to remove all uploads and start over.
     """)
-    with st.expander("Show Model's Performance"):
-        st.write("Below are the metrics from the model's test evaluation.")
-        try:
-            st.write("#### Training History")
-            st.image("training_history.png")
-            st.write("#### Confusion Matrix")
-            st.image("confusion_matrix.png")
-            st.write("#### Performance Report")
-            with open("model_performance.txt", "r") as f:
-                report = f.read()
-            st.text(report)
-        except FileNotFoundError as e:
-            st.warning(f"A performance file was not found: {e.filename}.")
-        except Exception as e:
-            st.error(f"An error occurred while displaying performance files: {e}")
 
 # --- MAIN APP LOGIC ---
 if model is None or CLASS_NAMES is None:
@@ -140,6 +143,7 @@ else:
                                 image_bytes = z.read(filename)
                                 image = Image.open(io.BytesIO(image_bytes))
                                 
+
                                 col1, col2 = st.columns([1, 2])
                                 with col1:
                                     st.image(image, caption=f"Inside ZIP: {filename}", use_container_width=True)
