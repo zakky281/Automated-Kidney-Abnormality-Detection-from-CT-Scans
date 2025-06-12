@@ -2,7 +2,7 @@
 
 This project uses a deep learning approach to detect kidney abnormalities (Normal, Cyst, Tumor, and Stone) from CT scan images. Built with Python and powered by a ResNet50 model, the application includes a Streamlit-based web interface for user-friendly interaction.
 
-For Model KERAS : (https://drive.google.com/drive/folders/1u290_Jcsg8wTTXtvlWJ9EcTuJ0lI9D7J?usp=sharing)
+For Model KERAS : https://drive.google.com/drive/folders/1u290_Jcsg8wTTXtvlWJ9EcTuJ0lI9D7J?usp=sharing
 
 ## 🧠 Overview
 
