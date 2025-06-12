@@ -14,20 +14,26 @@ For Model KERAS : https://drive.google.com/drive/folders/1u290_Jcsg8wTTXtvlWJ9Ec
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation (FOR WINDOWS)
 
 1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/zakky281/Automated-Kidney-Abnormality-Detection-from-CT-Scans.git
-cd kidney-ct-detection
+cd Automated-Kidney-Abnormality-Detection-from-CT-Scans
 ```
 
 2. **Create and activate a virtual environment**
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Create the virtual environment
+python -m venv .venv
+
+# Activate it (Windows)
+.\.venv\Scripts\Activate.ps1
+
+# Activate it (macOS/Linux)
+source .venv/bin/activate
 ```
 
 3. **Install dependencies**
@@ -36,7 +42,7 @@ pip install -r requirements.txt
 ```
 ---
 
-## 🚀 Usage
+## 🚀 Usage (FOR WINDOWS)
 1. **Run the Streamlit App**
 ```bash
 streamlit run app.py
