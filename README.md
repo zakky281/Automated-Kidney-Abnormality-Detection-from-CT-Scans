@@ -19,7 +19,7 @@ For Model KERAS : https://drive.google.com/drive/folders/1u290_Jcsg8wTTXtvlWJ9Ec
 1. **Clone the repository:**
 
 ```bash
-git clone [https://github.com/yourusername/kidney-ct-detection.git](https://github.com/zakky281/Automated-Kidney-Abnormality-Detection-from-CT-Scans.git)
+git clone https://github.com/zakky281/Automated-Kidney-Abnormality-Detection-from-CT-Scans.git
 cd kidney-ct-detection
 ```
 
