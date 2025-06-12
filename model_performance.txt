@@ -1,0 +1,18 @@
+--- Test Set Metrics ---
+
+Test Accuracy: 0.9637
+Test Precision: 0.9644
+Test Recall: 0.9621
+
+
+--- Classification Report ---
+              precision    recall  f1-score   support
+
+        Cyst       0.96      1.00      0.98       361
+      Normal       0.95      1.00      0.97       591
+       Stone       1.00      0.91      0.95       149
+       Tumor       1.00      0.83      0.91       193
+
+    accuracy                           0.96      1294
+   macro avg       0.98      0.93      0.95      1294
+weighted avg       0.97      0.96      0.96      1294

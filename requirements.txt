@@ -1,0 +1,15 @@
+numpy
+pandas
+tensorflow-directml-plugin
+matplotlib
+seaborn
+split-folders
+opencv-python
+scikit-learn
+imutils
+kaggle
+pydot
+Pillow
+streamlit
+# Note: Graphviz also needs to be installed on your system.
+# See: https://graphviz.org/download/
